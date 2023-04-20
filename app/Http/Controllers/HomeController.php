@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pesanan;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,15 +24,41 @@ class HomeController extends Controller
         ]);
     }
 
+    public function pesananSaya()
+    {
+        $email=session('email');
+        $id = DB::table('users')
+        ->where('email',$email)
+        ->pluck('id')
+        ->first();
+        $pesanan = DB::table('pesanan')
+        ->where('id_pemesan',$id)
+        ->select('*')
+        ->get();
+        return view('user.pesananSaya', [
+            'title' => 'Sewa Supir - Pesanan Saya',
+            'active' => 'pesanan',
+            'pesanan' => $pesanan,
+        ]);
+    }
+
     public function sewaSubmit(Request $request)
     {
+        $email=session('email');
+        $id = DB::table('users')
+        ->where('email',$email)
+        ->pluck('id')
+        ->first();
+        $waktu = date('Y-m-d H:i:s', strtotime($request->waktu));
+        
         if($request->jenis=='Pulang-Pergi'){
             Pesanan::insert([
                 'nama' => $request->nama,
+                'id_pemesan' => $id,
                 'kontak' => $request->kontak,
                 'lokasi' => $request->lokasi,
                 'tujuan' => $request->tujuan,
-                'waktu' => $request->waktu,
+                'waktu' => $waktu,
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
                 'durasi' => $request->durasi,
@@ -40,19 +67,17 @@ class HomeController extends Controller
         }else{
             Pesanan::insert([
                 'nama' => $request->nama,
+                'id_pemesan' => $id,
                 'kontak' => $request->kontak,
                 'lokasi' => $request->lokasi,
                 'tujuan' => $request->tujuan,
-                'waktu' => $request->waktu,
+                'waktu' => $waktu,
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
                 'keterangan' => $request->keterangan,
             ]);
         }
         
-        return view('user.home', [
-            'title' => 'Sewa Supir - Pesanan Saya',
-            'active' => 'pesanan',
-        ]);
+        return redirect('/pesananSaya')->with('success','Berhasil melakukan pemesanan');
     }
 }

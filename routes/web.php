@@ -28,6 +28,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::group(['middleware' => ['auth', 'cekRole:user']], function() {
     route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-    route::get('/buatPesanan', [HomeController::class, 'sewa'])->name('sewa')->middleware('auth');
-    route::get('/buatPesanan/submit', [HomeController::class, 'sewaSubmit'])->name('sewaSubmit')->middleware('auth');
+    route::get('/pesananSaya', [HomeController::class, 'sewa'])->name('sewa')->middleware('auth');
+    route::get('/pesananSaya/buatPesanan', [HomeController::class, 'sewa'])->name('sewa')->middleware('auth');
+    route::get('/pesananSaya/buatPesanan/submit', [HomeController::class, 'sewaSubmit'])->name('sewaSubmit')->middleware('auth');
 });

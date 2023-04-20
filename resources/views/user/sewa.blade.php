@@ -29,8 +29,8 @@
               <div class="col-md-12"> <label for="tujuan" class="form-label">Tujuan :</label> <input type="text" class="form-control" id="tujuan" name="tujuan" value="{{ old('tujuan') }}" required></div>
               <div class="col-md-12"> <label for="waktu" class="form-label">Waktu :</label> <input type="datetime-local" class="form-control" id="waktu" name="waktu" value="{{ old('waktu') }}" required></div>
               <div class="col-md-12">
-                  <label for="Kendaraan" class="form-label">Kendaraan :</label> 
-                  <select id="Kendaraan" class="form-select" name="Kendaraan" required>
+                  <label for="kendaraan" class="form-label">Kendaraan :</label> 
+                  <select id="kendaraan" class="form-select" name="kendaraan" required>
                       <option>Pilih Kendaraan!</option>
                       <option value="Mobil">Mobil</option>
                       <option value="Mobil Pick Up">Mobil Pick Up</option>

@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
+            $table->string('nama');
+            $table->string('id_pemesan');
             $table->string('lokasi');
             $table->string('tujuan');
             $table->datetime('waktu');

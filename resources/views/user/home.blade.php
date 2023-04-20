@@ -13,11 +13,11 @@
 
 
 
-@if(session('success'))
+{{-- @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
-@endif
+@endif --}}
 
 <div class="row">
       <div class="card col-md-12 mt-2 pb-4">
@@ -76,7 +76,7 @@
            </div>
 
            {{-- <h5 class="card-title">Cara Kerja "Sewa Supir"</h5> --}}
-           <a class="btn btn-primary" href="/buatPesanan">Sewa Sekarang!</a>
+           <a class="btn btn-primary" href="/pesananSaya/buatPesanan">Sewa Sekarang!</a>
                  
          </div>
       </div>
