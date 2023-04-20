@@ -12,30 +12,6 @@
 </div>
 
 
-<style>
-   .table-container {
-     max-height: 300px;
-     overflow-y: scroll;
-   }
-   
-   table {
-     width: 100%;
-     border-collapse: collapse;
-   }
-   
-   th, td {
-     padding: 8px;
-     text-align: left;
-     border-bottom: 1px solid #ddd;
-   }
-   
-   th {
-     background-color: #c3c3c3;
-     position: sticky;
-     top: 0;
-   }
-   
-   </style>
 
 @if(session('success'))
     <div class="alert alert-success">
@@ -46,45 +22,61 @@
 <div class="row">
       <div class="card col-md-12 mt-2 pb-4">
          <div class="card-body">
-             <h5 class="card-title">Daftar Kelas Anda Hari Ini</h5>
+             <h5 class="card-title">Tentang "Sewa Supir"</h5>
              <div class="table-container border">
-             {{-- <table>
-                <thead>
-                   <tr>
-                    <th scope="col" class="text-center">No</th>
-                    <th scope="col" class="text-center">ID Kelas</th>
-                    <th scope="col" class="text-center">Pengajar</th>
-                    <th scope="col" class="text-center">Ruang</th>
-                    <th scope="col" class="text-center">Pelajaran</th>
-                    <th scope="col" class="text-center">Waktu</th>
-                    <th scope="col" class="text-center">Action</th>
-                   </tr>
-                </thead>
-                
-                <tbody>
-                  @php($no=1)
-                  @if(count($kelaskuHariIni) > 0)
-                  @foreach($kelaskuHariIni as $item)
-                   <tr>
-                      <td scope="row" class="text-center">{{ $no++ }}</td>
-                      <td class="text-center">{{ $item->id }}</td>
-                      <td class="text-center">{{ $item->guru }}</td>
-                      <td class="text-center">{{ $item->ruang }}</td>
-                      <td class="text-center">{{ $item->pelajaran }}</td>
-                      <td class="text-center">{{ $item->hari }}, {{ substr($item->waktu, 0, 5) }}</td>
-                      <td class="text-center">
-                        <a class="btn btn-success" style="border-radius: 100px;" a href="{{ route('scan', ['id_kelas' => base64_encode($item->id)]) }}"><i class="bi bi-qr-code-scan text-white"></i></a>
-                     </td>
-                   </tr>
-                   @endforeach
-                   @else
-                   <tr>
-                     <td colspan="6" class="text-center">Tidak ada kelas</td>
-                   </tr>
-                   @endif
-                </tbody>
-             </table> --}}
+               <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                      aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                      aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                      aria-label="Slide 3"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="{{asset('admintemplate/img/slide1.jpg')}}" class="d-block w-100" alt="gambar1" style="height:450px">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-warning font-weight-bold" style="-webkit-text-stroke: 1px yellow; text-stroke: 1px yellow;">Kami menyediakan layanan penyewaan supir yang handal dan terlatih untuk mengantar anda ke tujuan.</h3>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{asset('admintemplate/img/slide2.jpg')}}" class="d-block w-100" alt="gambar2" style="height:450px">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-warning font-weight-bold" style="-webkit-text-stroke: 1px yellow; text-stroke: 1px yellow;">Kami memiliki tim supir yang profesional dan berpengalaman dalam mengemudikan berbagai jenis kendaraan, termasuk mobil pribadi, bus, minibus, dan kendaraan khusus. </h3>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{asset('admintemplate/img/slide3.jpg')}}" class="d-block w-100" alt="gambar3" style="height:450px">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-warning font-weight-bold" style="-webkit-text-stroke: 1px yellow; text-stroke: 1px yellow;">Kami juga memiliki jaringan supir yang luas dan terlatih di berbagai kota di Indonesia</h3>
+
+                      </div>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
             </div>
+
+            <div class="text-justify mt-4 mb-4">
+               <p>Sewa Supir adalah solusi terbaik untuk kebutuhan transportasi Anda. Kami memahami bahwa perjalanan Anda adalah hal yang penting, oleh karena itu kami menyediakan layanan supir yang terlatih dan profesional untuk membantu Anda dalam perjalanan bisnis, perjalanan wisata, atau sekadar berkendara dengan aman dan nyaman.</p>
+               
+               <p>Kami memastikan bahwa setiap supir kami telah melalui seleksi yang ketat dan pelatihan yang intensif, sehingga mereka mampu mengemudikan kendaraan dengan aman dan terampil. Selain itu, kami juga memastikan bahwa kendaraan kami selalu dalam kondisi terbaik, sehingga Anda dapat merasa nyaman dan aman selama dalam perjalanan.</p>
+               
+               <p>Kami juga menawarkan opsi sewa kendaraan dengan berbagai jenis dan kapasitas, mulai dari mobil pribadi hingga bus dan kendaraan khusus. Kami juga menawarkan opsi sewa harian, mingguan, maupun bulanan, serta layanan antar jemput bandara dan pengemudi cadangan untuk memastikan kenyamanan dan keamanan Anda selama dalam perjalanan.</p>
+               
+               <p>Jadi, jika Anda membutuhkan layanan transportasi yang handal dan terpercaya, Sewa Supir siap membantu. Hubungi kami sekarang dan nikmati pengalaman berkendara yang aman dan nyaman dengan tim supir kami yang profesional dan terlatih.</p>
+           </div>
+
+           <h5 class="card-title">Cara Kerja "Sewa Supir"</h5>
+                 
          </div>
       </div>
 </div>
