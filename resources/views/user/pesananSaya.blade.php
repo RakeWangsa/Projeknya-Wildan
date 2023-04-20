@@ -2,13 +2,16 @@
 
 @section('container')
 <div class="pagetitle mt-3">
-   <div class="container">
-      <div class="row align-items-center">
-         <div class="col">
-            <h1>Pesanan Saya</h1>
-         </div>
-      </div>
-   </div>
+  <div class="container">
+    <div class="row align-items-center">
+       <div class="col">
+          <h1>Pesanan Saya</h1>
+       </div>
+       <div class="col-auto">
+          <a class="btn btn-primary" href="/pesananSaya/buatPesanan"><i class="bi bi-person-fill-add me-2"></i><span>Buat Pesanan</span></a>
+       </div>
+    </div>
+ </div>
 </div>
 
 
@@ -52,34 +55,42 @@
                 <thead>
                    <tr>
                     <th scope="col" class="text-center">No</th>
-                    <th scope="col" class="text-center">ID Kelas</th>
-                    <th scope="col" class="text-center">Pengajar</th>
-                    <th scope="col" class="text-center">Ruang</th>
-                    <th scope="col" class="text-center">Pelajaran</th>
+                    <th scope="col" class="text-center">Nama</th>
+                    <th scope="col" class="text-center">Kontak</th>
+                    <th scope="col" class="text-center">Lokasi Penjemputan</th>
+                    <th scope="col" class="text-center">Tujuan</th>
                     <th scope="col" class="text-center">Waktu</th>
+                    <th scope="col" class="text-center">Kendaraan</th>
+                    <th scope="col" class="text-center">Jenis</th>
+                    <th scope="col" class="text-center">Durasi</th>
+                    <th scope="col" class="text-center">Keterangan</th>
                     <th scope="col" class="text-center">Action</th>
                    </tr>
                 </thead>
                 
                 <tbody>
                   @php($no=1)
-                  @if(count($kelaskuHariIni) > 0)
-                  @foreach($kelaskuHariIni as $item)
+                  @if(count($pesanan) > 0)
+                  @foreach($pesanan as $item)
                    <tr>
                       <td scope="row" class="text-center">{{ $no++ }}</td>
-                      <td class="text-center">{{ $item->id }}</td>
-                      <td class="text-center">{{ $item->guru }}</td>
-                      <td class="text-center">{{ $item->ruang }}</td>
-                      <td class="text-center">{{ $item->pelajaran }}</td>
-                      <td class="text-center">{{ $item->hari }}, {{ substr($item->waktu, 0, 5) }}</td>
+                      <td class="text-center">{{ $item->nama }}</td>
+                      <td class="text-center">{{ $item->kontak }}</td>
+                      <td class="text-center">{{ $item->lokasi }}</td>
+                      <td class="text-center">{{ $item->tujuan }}</td>
+                      <td class="text-center">{{ $item->waktu }}</td>
+                      <td class="text-center">{{ $item->kendaraan }}</td>
+                      <td class="text-center">{{ $item->jenis }}</td>
+                      <td class="text-center">{{ $item->durasi }}</td>
+                      <td class="text-center">{{ $item->keterangan }}</td>
                       <td class="text-center">
-                        <a class="btn btn-success" style="border-radius: 100px;" a href="{{ route('scan', ['id_kelas' => base64_encode($item->id)]) }}"><i class="bi bi-qr-code-scan text-white"></i></a>
+                        <a class="btn btn-success" style="border-radius: 100px;" a href=""><i class="bi bi-qr-code-scan text-white"></i></a>
                      </td>
                    </tr>
                    @endforeach
                    @else
                    <tr>
-                     <td colspan="6" class="text-center">Tidak ada kelas</td>
+                     <td colspan="12" class="text-center">Tidak ada pesanan</td>
                    </tr>
                    @endif
                 </tbody>
