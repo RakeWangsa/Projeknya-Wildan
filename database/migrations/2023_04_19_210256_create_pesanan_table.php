@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('lokasi');
             $table->string('tujuan');
             $table->datetime('waktu');
+            $table->string('kendaraan');
+            $table->string('jenis');
+            $table->string('durasi')->nullable();
+            $table->string('keterangan')->nullable();
             $table->string('kontak');
         });
     }

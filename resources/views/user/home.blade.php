@@ -23,7 +23,7 @@
       <div class="card col-md-12 mt-2 pb-4">
          <div class="card-body">
              <h5 class="card-title">Tentang "Sewa Supir"</h5>
-             <div class="table-container border">
+             <div class="table-container border" style="border-radius: 20px">
                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                   <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -33,7 +33,7 @@
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                       aria-label="Slide 3"></button>
                   </div>
-                  <div class="carousel-inner">
+                  <div class="carousel-inner" style="border-radius: 20px">
                     <div class="carousel-item active">
                       <img src="{{asset('admintemplate/img/slide1.jpg')}}" class="d-block w-100" alt="gambar1" style="height:450px">
                       <div class="carousel-caption d-none d-md-block">
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="text-justify mt-4 mb-4">
+            <div class="text-justify mt-4 mb-4 animate__animated animate__fadeIn">
                <p>Sewa Supir adalah solusi terbaik untuk kebutuhan transportasi Anda. Kami memahami bahwa perjalanan Anda adalah hal yang penting, oleh karena itu kami menyediakan layanan supir yang terlatih dan profesional untuk membantu Anda dalam perjalanan bisnis, perjalanan wisata, atau sekadar berkendara dengan aman dan nyaman.</p>
                
                <p>Kami memastikan bahwa setiap supir kami telah melalui seleksi yang ketat dan pelatihan yang intensif, sehingga mereka mampu mengemudikan kendaraan dengan aman dan terampil. Selain itu, kami juga memastikan bahwa kendaraan kami selalu dalam kondisi terbaik, sehingga Anda dapat merasa nyaman dan aman selama dalam perjalanan.</p>
@@ -75,7 +75,8 @@
                <p>Jadi, jika Anda membutuhkan layanan transportasi yang handal dan terpercaya, Sewa Supir siap membantu. Hubungi kami sekarang dan nikmati pengalaman berkendara yang aman dan nyaman dengan tim supir kami yang profesional dan terlatih.</p>
            </div>
 
-           <h5 class="card-title">Cara Kerja "Sewa Supir"</h5>
+           {{-- <h5 class="card-title">Cara Kerja "Sewa Supir"</h5> --}}
+           <a class="btn btn-primary" href="/buatPesanan">Sewa Sekarang!</a>
                  
          </div>
       </div>

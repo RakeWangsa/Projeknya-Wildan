@@ -13,4 +13,12 @@ class HomeController extends Controller
             'active' => 'home',
         ]);
     }
+
+    public function sewa()
+    {
+        return view('user.sewa', [
+            'title' => 'Buat Pesanan',
+            'active' => 'pesanan',
+        ]);
+    }
 }

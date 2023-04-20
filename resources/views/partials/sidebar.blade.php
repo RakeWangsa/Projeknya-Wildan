@@ -6,7 +6,7 @@
                <a class="nav-link collapsed {{ ($active === "management user") ? 'active' : '' }}" href="/managementUser"> <i class="bi bi-people"></i><span>Management User</span> </a>              
             @elseif (auth()->user()->role=="user")
                <a class="nav-link collapsed {{ ($active === "home") ? 'active' : '' }}" href="/home"> <i class="bi bi-grid"></i><span>Home</span> </a>
-               <a class="nav-link collapsed {{ ($active === "pesanan saya") ? 'active' : '' }}" href="/daftarKelasSiswa"> <i class="bi bi-list-ul"></i><span>Pesanan saya</span> </a> 
+               <a class="nav-link collapsed {{ ($active === "pesanan") ? 'active' : '' }}" href="/daftarKelasSiswa"> <i class="bi bi-list-ul"></i><span>Pesanan saya</span> </a> 
                <a class="nav-link collapsed {{ ($active === "pesanan saya") ? 'active' : '' }}" href="https://wa.me/6281818180551"> <i class="bi bi-whatsapp"></i><span>Hubungi Admin</span> </a> 
             @endif        
          @endauth    
