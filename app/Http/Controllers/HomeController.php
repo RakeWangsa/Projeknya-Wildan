@@ -50,6 +50,7 @@ class HomeController extends Controller
         ->pluck('id')
         ->first();
         $waktu = date('Y-m-d H:i:s', strtotime($request->waktu));
+        $tanggal_pulang = date('Y-m-d H:i:s', strtotime($request->tanggal_pulang));
         
         if($request->jenis=='Pulang-Pergi'){
             Pesanan::insert([
@@ -61,7 +62,7 @@ class HomeController extends Controller
                 'waktu' => $waktu,
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
-                'tanggal_pulang' => $request->tanggal_pulang,
+                'tanggal_pulang' => $tanggal_pulang,
                 'keterangan' => $request->keterangan,
             ]);
         }else{
@@ -74,7 +75,6 @@ class HomeController extends Controller
                 'waktu' => $waktu,
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
-                'tanggal_pulang' => '-',
                 'keterangan' => $request->keterangan,
             ]);
         }

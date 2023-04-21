@@ -1,6 +1,13 @@
 @extends('layouts.main')
 
 @section('container')
+
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="pagetitle mt-3">
    <div class="container">
       <div class="row align-items-center">
@@ -13,11 +20,7 @@
 
 
 
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+
 
 <div class="row">
       <div class="card col-md-12 mt-2 pb-4">
@@ -57,22 +60,23 @@
 </div>
 <script>
 const jenisSelect = document.querySelector('#jenis');
-const durasiInput = document.querySelector('#cek');
+const tanggalPulangInput = document.querySelector('#cek');
 
-// Hide the duration input initially
-durasiInput.style.display = 'none';
+tanggalPulangInput.style.display = 'none';
 
 // Add event listener to jenisSelect
 jenisSelect.addEventListener('change', function() {
   // Check if the selected option is "Pulang-Pergi"
   if (this.value === 'Pulang-Pergi') {
-    // Show the duration input
-    durasiInput.style.display = 'block';
+    tanggalPulangInput.style.display = 'block';
+    tanggalPulangInput.querySelector('input').setAttribute('required', 'required');
   } else {
-    // Hide the duration input
-    durasiInput.style.display = 'none';
+    tanggalPulangInput.style.display = 'none';
+    tanggalPulangInput.querySelector('input').removeAttribute('required');
+    tanggalPulangInput.querySelector('input').value = '';
   }
 });
+
 
 </script>
 @endsection

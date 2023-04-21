@@ -21,7 +21,7 @@ return new class extends Migration
             $table->datetime('waktu');
             $table->string('kendaraan');
             $table->string('jenis');
-            $table->string('tanggal_pulang')->nullable();
+            $table->datetime('tanggal_pulang')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('kontak');
         });
