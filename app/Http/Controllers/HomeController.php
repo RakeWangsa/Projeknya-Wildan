@@ -109,6 +109,45 @@ class HomeController extends Controller
         ]);
     }
 
+    public function editPesananSubmit($id, Request $request)
+    {
+        $id = base64_decode($id);
+        $email=session('email');
+        $id_pemesan = DB::table('users')
+        ->where('email',$email)
+        ->pluck('id')
+        ->first();
+        $waktu = date('Y-m-d H:i:s', strtotime($request->waktu));
+        $tanggal_pulang = date('Y-m-d H:i:s', strtotime($request->tanggal_pulang));
+        $pesanan = Pesanan::findOrFail($id);
+        
+        if($request->jenis=='Pulang-Pergi'){
+            $pesanan->nama = $request->nama;
+            $pesanan->kontak = $request->kontak;
+            $pesanan->lokasi = $request->lokasi;
+            $pesanan->tujuan = $request->tujuan;
+            $pesanan->waktu = $waktu;
+            $pesanan->kendaraan = $request->kendaraan;
+            $pesanan->jenis = $request->jenis;
+            $pesanan->tanggal_pulang = $tanggal_pulang;
+            $pesanan->keterangan = $request->keterangan;
+            $pesanan->update();
+        }else{
+            $pesanan->nama = $request->nama;
+            $pesanan->kontak = $request->kontak;
+            $pesanan->lokasi = $request->lokasi;
+            $pesanan->tujuan = $request->tujuan;
+            $pesanan->waktu = $waktu;
+            $pesanan->kendaraan = $request->kendaraan;
+            $pesanan->jenis = $request->jenis;
+            $pesanan->tanggal_pulang = $tanggal_pulang;
+            $pesanan->keterangan = $request->keterangan;
+            $pesanan->update();
+        }
+        
+        return redirect('/pesananSaya')->with('success','Berhasil mengedit pemesanan');
+    }
+
     public function hapusPesanan($id)
     {
         $id = base64_decode($id);

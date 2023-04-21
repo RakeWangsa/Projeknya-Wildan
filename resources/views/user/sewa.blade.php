@@ -53,29 +53,31 @@
               <div class="col-md-12">
                 <label for="jenis" class="form-label">Jenis Jasa :</label> 
                 <select id="jenis" class="form-select" name="jenis" required>
+                  @if(isset($pesanan[0]->jenis))
+                    <option value="Pergi" @if($pesanan[0]->jenis=="Pergi") selected @endif>Antar</option>
+                    <option value="Pulang-Pergi" @if($pesanan[0]->jenis=="Pulang-Pergi") selected @endif>Pulang-Pergi</option>
+                    <option value="Kirim Barang" @if($pesanan[0]->jenis=="Kirim Barang") selected @endif>Kirim Barang</option>
+                  @else
                     <option>Pilih Jenis!</option>
-                    <option value="Pergi">Antar</option>
+                    <option value="Antar">Antar</option>
                     <option value="Pulang-Pergi">Pulang-Pergi</option>
                     <option value="Kirim Barang">Kirim Barang</option>
+                  @endif
                 </select>
             </div>
-            <div class="col-md-12" id="cek"> <label for="tanggal_pulang" class="form-label">Tanggal pulang :</label> <input type="datetime-local" class="form-control" id="tanggal_pulang" name="tanggal_pulang" value="{{ old('tanggal_pulang') }}" required></div>
-            <div class="col-md-12"> <label for="keterangan" class="form-label">Keterangan Tambahan :</label> <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{ old('keterangan') }}"></div>
+            <div class="col-md-12" id="cek"> <label for="tanggal_pulang" class="form-label">Tanggal pulang :</label> <input type="datetime-local" class="form-control" id="tanggal_pulang" name="tanggal_pulang" @if(isset($pesanan[0]->tanggal_pulang)) value="{{ $pesanan[0]->tanggal_pulang }}" @else value="{{ old('tanggal_pulang') }}" @endif required></div>
+            <div class="col-md-12"> <label for="keterangan" class="form-label">Keterangan Tambahan :</label> <input type="text" class="form-control" id="keterangan" name="keterangan" @if(isset($pesanan[0]->keterangan)) value="{{ $pesanan[0]->keterangan }}" @else value="{{ old('keterangan') }}" @endif></div>
             <div class="text-center mb-5 mt-4"> <button type="submit" class="btn btn-primary">Submit</button> <button type="reset" class="btn btn-secondary">Reset</button></div>
           </form>
          </div>
       </div>
 </div>
 <script>
-const jenisSelect = document.querySelector('#jenis');
-const tanggalPulangInput = document.querySelector('#cek');
-
-tanggalPulangInput.style.display = 'none';
-
-// Add event listener to jenisSelect
-jenisSelect.addEventListener('change', function() {
-  // Check if the selected option is "Pulang-Pergi"
-  if (this.value === 'Pulang-Pergi') {
+  const jenisSelect = document.querySelector('#jenis');
+  const tanggalPulangInput = document.querySelector('#cek');
+  
+  // Check if the selected option is "Pulang-Pergi" on page load
+  if (jenisSelect.value === 'Pulang-Pergi') {
     tanggalPulangInput.style.display = 'block';
     tanggalPulangInput.querySelector('input').setAttribute('required', 'required');
   } else {
@@ -83,8 +85,19 @@ jenisSelect.addEventListener('change', function() {
     tanggalPulangInput.querySelector('input').removeAttribute('required');
     tanggalPulangInput.querySelector('input').value = '';
   }
-});
-
-
-</script>
+  
+  // Add event listener to jenisSelect
+  jenisSelect.addEventListener('change', function() {
+    // Check if the selected option is "Pulang-Pergi"
+    if (this.value === 'Pulang-Pergi') {
+      tanggalPulangInput.style.display = 'block';
+      tanggalPulangInput.querySelector('input').setAttribute('required', 'required');
+    } else {
+      tanggalPulangInput.style.display = 'none';
+      tanggalPulangInput.querySelector('input').removeAttribute('required');
+      tanggalPulangInput.querySelector('input').value = '';
+    }
+  });
+  </script>
+  
 @endsection
