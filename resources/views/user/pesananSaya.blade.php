@@ -61,8 +61,8 @@
                     <th scope="col" class="text-center">Tujuan</th>
                     <th scope="col" class="text-center">Waktu</th>
                     <th scope="col" class="text-center">Kendaraan</th>
-                    <th scope="col" class="text-center">Jenis</th>
-                    <th scope="col" class="text-center">Durasi</th>
+                    <th scope="col" class="text-center">Jenis Jasa</th>
+                    <th scope="col" class="text-center">Tanggal Pulang</th>
                     <th scope="col" class="text-center">Keterangan</th>
                     <th scope="col" class="text-center">Action</th>
                    </tr>
@@ -84,7 +84,8 @@
                       <td class="text-center">{{ $item->durasi }}</td>
                       <td class="text-center">{{ $item->keterangan }}</td>
                       <td class="text-center">
-                        <a class="btn btn-success" style="border-radius: 100px;" a href=""><i class="bi bi-qr-code-scan text-white"></i></a>
+                        <a class="btn btn-warning" style="border-radius: 100px;" a href=""><i class="bi bi-pencil-square text-white"></i></a>
+                        <a class="btn btn-danger" style="border-radius: 100px;" onclick="return confirm('Apakah anda yakin?')" a href=""><i class="bi bi-trash"></i></a>
                      </td>
                    </tr>
                    @endforeach

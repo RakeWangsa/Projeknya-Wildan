@@ -40,15 +40,15 @@
                   </select>
               </div>
               <div class="col-md-12">
-                <label for="jenis" class="form-label">Jenis :</label> 
+                <label for="jenis" class="form-label">Jenis Jasa :</label> 
                 <select id="jenis" class="form-select" name="jenis" required>
                     <option>Pilih Jenis!</option>
-                    <option value="Pergi">Pergi</option>
+                    <option value="Pergi">Antar</option>
                     <option value="Pulang-Pergi">Pulang-Pergi</option>
                     <option value="Kirim Barang">Kirim Barang</option>
                 </select>
             </div>
-            <div class="col-md-12" id="cek"> <label for="durasi" class="form-label">Durasi :</label> <input type="number" size="1" id="durasi" name="durasi" value="0" required> Hari</div>
+            <div class="col-md-12" id="cek"> <label for="tanggal_pulang" class="form-label">Tanggal pulang :</label> <input type="datetime-local" class="form-control" id="tanggal_pulang" name="tanggal_pulang" value="{{ old('tanggal_pulang') }}" required></div>
             <div class="col-md-12"> <label for="keterangan" class="form-label">Keterangan Tambahan :</label> <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{ old('keterangan') }}"></div>
             <div class="text-center mb-5 mt-4"> <button type="submit" class="btn btn-primary">Submit</button> <button type="reset" class="btn btn-secondary">Reset</button></div>
           </form>

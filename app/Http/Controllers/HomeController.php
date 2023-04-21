@@ -61,7 +61,7 @@ class HomeController extends Controller
                 'waktu' => $waktu,
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
-                'durasi' => $request->durasi,
+                'tanggal_pulang' => $request->tanggal_pulang,
                 'keterangan' => $request->keterangan,
             ]);
         }else{
@@ -74,6 +74,7 @@ class HomeController extends Controller
                 'waktu' => $waktu,
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
+                'tanggal_pulang' => '-',
                 'keterangan' => $request->keterangan,
             ]);
         }
