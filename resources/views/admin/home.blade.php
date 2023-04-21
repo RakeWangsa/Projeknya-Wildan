@@ -10,11 +10,11 @@
   <div class="container">
     <div class="row align-items-center">
        <div class="col">
-          <h1>Pesanan Saya</h1>
+          <h1>Daftar Pesanan</h1>
        </div>
-       <div class="col-auto">
+       {{-- <div class="col-auto">
           <a class="btn btn-primary" href="/pesananSaya/buatPesanan"><i class="bi bi-person-fill-add me-2"></i><span>Buat Pesanan</span></a>
-       </div>
+       </div> --}}
     </div>
  </div>
 </div>
@@ -22,7 +22,7 @@
 
 <style>
    .table-container {
-     max-height: 300px;
+     max-height: 500px;
      overflow-y: scroll;
    }
    
@@ -50,7 +50,7 @@
 <div class="row">
       <div class="card col-md-12 mt-2 pb-4">
          <div class="card-body">
-             <h5 class="card-title">Daftar Pesanan Saya</h5>
+             <h5 class="card-title">Daftar Pesanan</h5>
              <div class="table-container border">
              <table>
                 <thead>

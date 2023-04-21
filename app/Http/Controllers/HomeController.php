@@ -16,6 +16,18 @@ class HomeController extends Controller
         ]);
     }
 
+    public function homeAdmin()
+    {
+        $pesanan = DB::table('pesanan')
+        ->select('*')
+        ->get();
+        return view('admin.home', [
+            'title' => 'Sewa Supir - Home (Admin)',
+            'active' => 'home',
+            'pesanan' => $pesanan,
+        ]);
+    }
+
     public function sewa()
     {
         return view('user.sewa', [
