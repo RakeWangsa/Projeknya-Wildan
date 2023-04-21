@@ -94,6 +94,21 @@ class HomeController extends Controller
         return redirect('/pesananSaya')->with('success','Berhasil melakukan pemesanan');
     }
 
+    public function editPesanan($id)
+    {
+        $id = base64_decode($id);
+        $pesanan = DB::table('pesanan')
+        ->where('id',$id)
+        ->select('*')
+        ->get();
+
+        return view('user.sewa', [
+            'title' => 'Sewa Supir - Edit Pesanan',
+            'active' => 'pesanan',
+            'pesanan' => $pesanan,
+        ]);
+    }
+
     public function hapusPesanan($id)
     {
         $id = base64_decode($id);

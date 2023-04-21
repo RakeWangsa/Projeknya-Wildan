@@ -93,7 +93,7 @@
                       <td class="text-center">-</td>
                       @endif
                       <td class="text-center">
-                        <a class="btn btn-warning" style="border-radius: 100px;" a href=""><i class="bi bi-pencil-square text-white"></i></a>
+                        <a class="btn btn-warning" style="border-radius: 100px;" a href="{{ route('editPesanan', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-pencil-square text-white"></i></a>
                         <a class="btn btn-danger" style="border-radius: 100px;" onclick="return confirm('Apakah anda yakin?')" a href="{{ route('hapusPesanan', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-trash"></i></a>
                      </td>
                    </tr>
