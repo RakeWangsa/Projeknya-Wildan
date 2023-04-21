@@ -106,6 +106,7 @@ class HomeController extends Controller
             'title' => 'Sewa Supir - Edit Pesanan',
             'active' => 'pesanan',
             'pesanan' => $pesanan,
+            'id' => $id,
         ]);
     }
 
@@ -140,7 +141,7 @@ class HomeController extends Controller
             $pesanan->waktu = $waktu;
             $pesanan->kendaraan = $request->kendaraan;
             $pesanan->jenis = $request->jenis;
-            $pesanan->tanggal_pulang = $tanggal_pulang;
+            $pesanan->tanggal_pulang = NULL;
             $pesanan->keterangan = $request->keterangan;
             $pesanan->update();
         }

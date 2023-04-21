@@ -25,7 +25,11 @@
 <div class="row">
       <div class="card col-md-12 mt-2 pb-4">
          <div class="card-body">
-             <form class="row g-3 mt-3" method="GET" action="{{route('sewaSubmit')}}">
+          @if(isset($pesanan))
+            <form class="row g-3 mt-3" method="GET" action="{{ route('editPesananSubmit', ['id' => base64_encode($id)]) }}">
+          @else
+            <form class="row g-3 mt-3" method="GET" action="{{route('sewaSubmit')}}">
+          @endif
               <div class="col-md-12"> <label for="nama" class="form-label">Nama :</label> <input type="text" class="form-control" id="nama" name="nama" @if(isset($pesanan[0]->nama)) value="{{ $pesanan[0]->nama }}" @else value="{{ old('nama') }}" @endif required></div>
               <div class="col-md-12"> <label for="kontak" class="form-label">Kontak :</label> <input type="text" class="form-control" id="kontak" name="kontak" @if(isset($pesanan[0]->kontak)) value="{{ $pesanan[0]->kontak }}" @else value="{{ old('kontak') }}" @endif required></div>
               <div class="col-md-12"> <label for="lokasi" class="form-label">Lokasi penjemputan :</label> <input type="text" class="form-control" id="lokasi" name="lokasi" @if(isset($pesanan[0]->lokasi)) value="{{ $pesanan[0]->lokasi }}" @else value="{{ old('lokasi') }}" @endif required></div>
@@ -54,7 +58,7 @@
                 <label for="jenis" class="form-label">Jenis Jasa :</label> 
                 <select id="jenis" class="form-select" name="jenis" required>
                   @if(isset($pesanan[0]->jenis))
-                    <option value="Pergi" @if($pesanan[0]->jenis=="Pergi") selected @endif>Antar</option>
+                    <option value="Antar" @if($pesanan[0]->jenis=="Antar") selected @endif>Antar</option>
                     <option value="Pulang-Pergi" @if($pesanan[0]->jenis=="Pulang-Pergi") selected @endif>Pulang-Pergi</option>
                     <option value="Kirim Barang" @if($pesanan[0]->jenis=="Kirim Barang") selected @endif>Kirim Barang</option>
                   @else
