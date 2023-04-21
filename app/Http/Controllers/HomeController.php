@@ -81,4 +81,12 @@ class HomeController extends Controller
         
         return redirect('/pesananSaya')->with('success','Berhasil melakukan pemesanan');
     }
+
+    public function hapusPesanan($id)
+    {
+        $id = base64_decode($id);
+        Pesanan::where('id', $id)->delete();
+
+        return redirect('/pesananSaya')->with('success','Berhasil menghapus pesanan');
+    }
 }
