@@ -50,8 +50,8 @@
 <div class="row">
       <div class="card col-md-12 mt-2 pb-4">
          <div class="card-body">
-             <h5 class="card-title">Daftar Pesanan</h5>
-             <div class="table-container border">
+             {{-- <h5 class="card-title">Daftar Pesanan</h5> --}}
+             <div class="table-container border mt-4">
              <table>
                 <thead>
                    <tr>
@@ -73,7 +73,7 @@
                   @php($no=1)
                   @if(count($pesanan) > 0)
                   @foreach($pesanan as $item)
-                   <tr>
+                   <tr data-id="{{ $item->id }}">
                       <td scope="row" class="text-center">{{ $no++ }}</td>
                       <td class="text-center">{{ $item->nama }}</td>
                       <td class="text-center">{{ $item->kontak }}</td>
@@ -109,4 +109,57 @@
          </div>
       </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Detail Pesanan</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <!-- isi konten modal disini -->
+       </div>
+     </div>
+   </div>
+ </div>
+
+ 
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+ 
+ <script>
+    $(document).ready(function() {
+       $('table tbody tr').click(function() {
+          var id = $(this).data('id');
+          var nama = $(this).find('.nama').text();
+          var kontak = $(this).find('.kontak').text();
+          var lokasi = $(this).find('.lokasi').text();
+          var tujuan = $(this).find('.tujuan').text();
+          var waktu = $(this).find('.waktu').text();
+          var kendaraan = $(this).find('.kendaraan').text();
+          var jenis = $(this).find('.jenis').text();
+          var tanggal_pulang = $(this).find('.tanggal_pulang').text();
+          var keterangan = $(this).find('.keterangan').text();
+ 
+          // ganti ".modal-body" dengan selector yang sesuai dengan konten modal Anda
+          $('.modal-body').html(`
+             <p>Nama: ${nama}</p>
+             <p>Kontak: ${kontak}</p>
+             <p>Lokasi Penjemputan: ${lokasi}</p>
+             <p>Tujuan: ${tujuan}</p>
+             <p>Waktu: ${waktu}</p>
+             <p>Kendaraan: ${kendaraan}</p>
+             <p>Jenis Jasa: ${jenis}</p>
+             <p>Tanggal Pulang: ${tanggal_pulang}</p>
+             <p>Keterangan: ${keterangan}</p>
+          `);
+ 
+          $('#myModal').modal('show');
+       });
+    });
+ </script>
+ 
+
 @endsection
