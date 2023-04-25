@@ -151,9 +151,18 @@ class HomeController extends Controller
 
     public function hapusPesanan($id)
     {
+        $email=session('email');
+        $role = DB::table('users')
+        ->where('email', $email)
+        ->pluck('role')
+        ->first();
         $id = base64_decode($id);
         Pesanan::where('id', $id)->delete();
 
-        return redirect('/pesananSaya')->with('success','Berhasil menghapus pesanan');
+        if($role=="admin"){
+            return redirect('/home/admin')->with('success','Berhasil menghapus pesanan');
+        }else{
+            return redirect('/pesananSaya')->with('success','Berhasil menghapus pesanan');
+        }
     }
 }
