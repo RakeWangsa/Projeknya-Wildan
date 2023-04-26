@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth', 'cekRole:user']], function() {
 
 Route::group(['middleware' => ['auth', 'cekRole:admin']], function() {
     route::get('/home/admin', [HomeController::class, 'homeAdmin'])->name('homeAdmin')->middleware('auth');
+    Route::get('/home/admin/proses/{id}', [HomeController::class, 'prosesPesanan'])->name('prosesPesanan')->middleware('auth');
+
     route::get('/home/admin/hapus/{id}', [HomeController::class, 'hapusPesanan'])->name('hapusPesananAdmin')->middleware('auth');
     Route::get('/statusDiterima/{id}', [HomeController::class, 'statusDiterima'])->name('statusDiterima')->middleware('auth');
     Route::get('/statusDitolak/{id}', [HomeController::class, 'statusDitolak'])->name('statusDitolak')->middleware('auth');

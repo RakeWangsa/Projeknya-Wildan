@@ -25,7 +25,9 @@ return new class extends Migration
             $table->string('keterangan')->nullable();
             $table->string('kontak');
             $table->string('status');
-            $table->string('info')->nullable();
+            $table->string('supir')->nullable();
+            $table->string('harga')->nullable();
+            $table->string('keterangan2')->nullable();
         });
     }
 

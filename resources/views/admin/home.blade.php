@@ -57,7 +57,7 @@
                     <tr>
                       <th scope="col" class="text-center">No</th>
                       <th scope="col" class="text-center">Nama</th>
-                      <th scope="col" class="text-center">Status</th>
+                      <th scope="col" class="text-center">Tujuan</th>
                       <th scope="col" class="text-center">Action</th>
                     </tr>
                   </thead>
@@ -69,7 +69,7 @@
                         <tr>
                           <td scope="row" class="text-center">{{ $no++ }}</td>
                           <td class="text-center">{{ $item->nama }}</td>
-                          <td class="text-center">{{ $item->status }}</td>
+                          <td class="text-center">{{ $item->tujuan }}</td>
                           <td class="text-center">
                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{ $item->id }}">
                               Detail
@@ -83,7 +83,7 @@
                            <div class="modal-content">
                               <div class="modal-header">
                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Pesanan</h1>
-                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                 {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                               </div>
                               <div class="modal-body">
                                  <p>Nama : {{ $item->nama }}</p>
@@ -105,7 +105,7 @@
                               </div>
                               <div class="modal-footer">
                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                 <button type="button" class="btn btn-primary">Save changes</button>
+                                 <a class="btn btn-primary">Lanjutkan</a>
                               </div>
                            </div>
                            </div>
@@ -118,7 +118,6 @@
                     @endif
                   </tbody>
                 </table>
-                
             </div>
          </div>
       </div>

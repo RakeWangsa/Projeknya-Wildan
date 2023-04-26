@@ -168,6 +168,21 @@ class HomeController extends Controller
         }
     }
 
+    public function prosesPesanan($id)
+    {
+        $id = base64_decode($id);
+        $pesanan = DB::table('pesanan')
+        ->where('id',$id)
+        ->select('*')
+        ->get();
+        return view('user.sewa', [
+            'title' => 'Sewa Supir - Proses Pesanan',
+            'active' => 'home',
+            'pesanan' => $pesanan,
+            'id' => $id,
+        ]);
+    }
+
     public function statusDiterima($id)
     {
         $id = base64_decode($id);
