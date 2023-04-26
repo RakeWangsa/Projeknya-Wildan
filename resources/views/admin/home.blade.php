@@ -52,68 +52,79 @@
          <div class="card-body">
              <h5 class="card-title">Daftar Pesanan</h5>
              <div class="table-container border mt-4">
-             <table>
-                <thead>
-                   <tr>
-                    <th scope="col" class="text-center">No</th>
-                    <th scope="col" class="text-center">Nama</th>
-                    <th scope="col" class="text-center">Kontak</th>
-                    <th scope="col" class="text-center">Lokasi Penjemputan</th>
-                    <th scope="col" class="text-center">Tujuan</th>
-                    <th scope="col" class="text-center">Waktu</th>
-                    <th scope="col" class="text-center">Kendaraan</th>
-                    <th scope="col" class="text-center">Jenis Jasa</th>
-                    <th scope="col" class="text-center">Tanggal Pulang</th>
-                    <th scope="col" class="text-center">Keterangan</th>
-                    <th scope="col" class="text-center">Status</th>
-                    <th scope="col" class="text-center">Action</th>
-                   </tr>
-                </thead>
+               <table>
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">No</th>
+                      <th scope="col" class="text-center">Nama</th>
+                      <th scope="col" class="text-center">Status</th>
+                      <th scope="col" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                     @php($no=1)
+                    @if(count($pesanan) > 0)
+                      @foreach($pesanan as $item)
+                        <tr>
+                          <td scope="row" class="text-center">{{ $no++ }}</td>
+                          <td class="text-center">{{ $item->nama }}</td>
+                          <td class="text-center">{{ $item->status }}</td>
+                          <td class="text-center">
+                           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{ $item->id }}">
+                              Detail
+                            </button>
+                          </td>
+                        </tr>
                 
-                <tbody>
-                  @php($no=1)
-                  @if(count($pesanan) > 0)
-                  @foreach($pesanan as $item)
-                   <tr data-id="{{ $item->id }}">
-                      <td scope="row" class="text-center">{{ $no++ }}</td>
-                      <td class="text-center">{{ $item->nama }}</td>
-                      <td class="text-center">{{ $item->kontak }}</td>
-                      <td class="text-center">{{ $item->lokasi }}</td>
-                      <td class="text-center">{{ $item->tujuan }}</td>
-                      <td class="text-center">{{ $item->waktu }}</td>
-                      <td class="text-center">{{ $item->kendaraan }}</td>
-                      <td class="text-center">{{ $item->jenis }}</td>
-                      @if(isset($item->tanggal_pulang))
-                      <td class="text-center">{{ $item->tanggal_pulang }}</td>
-                      @else
-                      <td class="text-center">-</td>
-                      @endif
-                      @if(isset($item->keterangan))
-                      <td class="text-center">{{ $item->keterangan }}</td>
-                      @else
-                      <td class="text-center">-</td>
-                      @endif
-                      <td class="text-center">{{ $item->status }}</td>
-                      <td class="text-center">
-                        <a class="btn btn-primary" style="border-radius: 100px;" a href="{{ route('statusDiterima', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-check-circle text-white"></i></a>
-                        <a class="btn btn-warning" style="border-radius: 100px;" a href="{{ route('statusDitolak', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-x-circle text-white"></i></a>
-                        <a class="btn btn-danger" style="border-radius: 100px;" onclick="return confirm('Apakah anda yakin?')" a href="{{ route('hapusPesananAdmin', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-trash"></i></a>
-                     </td>
-                   </tr>
-                   @endforeach
-                   @else
-                   <tr>
-                     <td colspan="12" class="text-center">Tidak ada pesanan</td>
-                   </tr>
-                   @endif
-                </tbody>
-             </table>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Pesanan</h1>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                 <p>Nama : {{ $item->nama }}</p>
+                                 <p>Kontak : {{ $item->kontak }}</p>
+                                 <p>Lokasi Penjemputan : {{ $item->lokasi }}</p>
+                                 <p>Tujuan : {{ $item->tujuan }}</p>
+                                 <p>Waktu : {{ $item->waktu }}</p>
+                                 <p>Kendaraan : {{ $item->kendaraan }}</p>
+                                 <p>Jenis Jasa : {{ $item->jenis }}</p>
+                                 @if(isset($item->tanggal_pulang))
+                                    <p>Tanggal Pulang : {{ $item->tanggal_pulang }}</p>
+                                 @endif
+                                 @if(isset($item->keterangan))
+                                    <p>Keterangan : {{ $item->keterangan }}</p>
+                                 @else
+                                    <p>Keterangan : -</p>
+                                 @endif
+                                 <p>Status : {{ $item->status }}</p>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                 <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                           </div>
+                           </div>
+                        </div>
+                      @endforeach
+                    @else
+                      <tr>
+                        <td colspan="3" class="text-center">Tidak ada pesanan</td>
+                      </tr>
+                    @endif
+                  </tbody>
+                </table>
+                
             </div>
          </div>
       </div>
 </div>
 
-<!-- Modal -->
+{{-- <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog">
      <div class="modal-content">
@@ -126,7 +137,7 @@
        </div>
      </div>
    </div>
- </div>
+ </div> --}}
 
 
  <div class="row">
