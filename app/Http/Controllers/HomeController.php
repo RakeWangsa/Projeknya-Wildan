@@ -183,6 +183,19 @@ class HomeController extends Controller
         ]);
     }
 
+    public function prosesPesananSubmit($id, Request $request)
+    {
+        $id = base64_decode($id);
+        $pesanan = Pesanan::find($id);
+        $pesanan->status = $request->status;
+        $pesanan->supir = $request->supir;
+        $pesanan->kontaksupir = $request->kontaksupir;
+        $pesanan->harga = $request->harga;
+        $pesanan->keterangan2 = $request->keterangan2;
+        $pesanan->save();
+        return redirect('/home/admin')->with('success','Berhasil memproses pesanan');
+    }
+
     public function statusDiterima($id)
     {
         $id = base64_decode($id);

@@ -25,7 +25,7 @@
 <div class="row">
       <div class="card col-md-12 mt-2 pb-4">
          <div class="card-body">
-            <form class="row g-3 mt-3" method="GET" action="{{ route('editPesananSubmit', ['id' => base64_encode($id)]) }}">
+            <form class="row g-3 mt-3" method="GET" action="{{ route('prosesPesananSubmit', ['id' => base64_encode($id)]) }}">
               <div class="col-md-12">
                 <label for="status" class="form-label">Status :</label> 
                 <select id="status" class="form-select" name="status" required>
