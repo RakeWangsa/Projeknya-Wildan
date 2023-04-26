@@ -105,7 +105,7 @@
                               </div>
                               <div class="modal-footer">
                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                 <a class="btn btn-primary">Lanjutkan</a>
+                                 <a class="btn btn-primary" a href="{{ route('prosesPesanan', ['id' => base64_encode($item->id)]) }}">Lanjutkan</a>
                               </div>
                            </div>
                            </div>

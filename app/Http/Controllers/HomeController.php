@@ -175,7 +175,7 @@ class HomeController extends Controller
         ->where('id',$id)
         ->select('*')
         ->get();
-        return view('user.sewa', [
+        return view('admin.prosesPesanan', [
             'title' => 'Sewa Supir - Proses Pesanan',
             'active' => 'home',
             'pesanan' => $pesanan,
