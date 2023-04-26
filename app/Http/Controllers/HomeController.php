@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pesanan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
 {
@@ -56,6 +57,19 @@ class HomeController extends Controller
 
     public function sewaSubmit(Request $request)
     {
+        $messages = [
+            'required' => ':attribute wajib diisi ',
+            'kendaraan.required' => 'Pilih Jenis Kendaraan!',
+            'kendaraan.not_in' => 'Pilih Jenis Kendaraan!',
+            'jenis.required' => 'Pilih Jenis Jasa!',
+            'jenis.not_in' => 'Pilih Jenis Jasa!',
+        ];
+        $this->validate($request, [
+        'kendaraan' => ['required', Rule::notIn(['Pilih Jenis Kendaraan!'])],
+        'jenis' => ['required', Rule::notIn(['Pilih Jenis Jasa!'])],
+        ], $messages);
+
+
         $email=session('email');
         $id = DB::table('users')
         ->where('email',$email)
@@ -185,6 +199,15 @@ class HomeController extends Controller
 
     public function prosesPesananSubmit($id, Request $request)
     {
+        $messages = [
+                'required' => ':attribute wajib diisi ',
+                'status.required' => 'Pilih Jenis status!',
+                'status.not_in' => 'Pilih Jenis status!',
+            ];
+        $this->validate($request, [
+        'status' => ['required', Rule::notIn(['Pilih Status!'])],
+        ], $messages);
+
         $id = base64_decode($id);
         $pesanan = Pesanan::find($id);
         $pesanan->status = $request->status;

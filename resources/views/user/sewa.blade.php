@@ -2,11 +2,6 @@
 
 @section('container')
 
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
 
 <div class="pagetitle mt-3">
    <div class="container">
@@ -18,7 +13,21 @@
    </div>
 </div>
 
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+    @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+    </ul>
+</div>
+@endif
 
 
 
@@ -45,7 +54,7 @@
                       <option value="Bus" @if($pesanan[0]->kendaraan=="Bus") selected @endif>Bus</option>
                       <option value="Truk" @if($pesanan[0]->kendaraan=="Truk") selected @endif>Truk</option>
                     @else
-                      <option>Pilih Kendaraan!</option>
+                      <option>Pilih Jenis Kendaraan!</option>
                       <option value="Mobil">Mobil</option>
                       <option value="Mobil Pick Up">Mobil Pick Up</option>
                       <option value="Minibus">Minibus</option>
@@ -62,7 +71,7 @@
                     <option value="Pulang-Pergi" @if($pesanan[0]->jenis=="Pulang-Pergi") selected @endif>Pulang-Pergi</option>
                     <option value="Kirim Barang" @if($pesanan[0]->jenis=="Kirim Barang") selected @endif>Kirim Barang</option>
                   @else
-                    <option>Pilih Jenis!</option>
+                    <option>Pilih Jenis Jasa!</option>
                     <option value="Antar">Antar</option>
                     <option value="Pulang-Pergi">Pulang-Pergi</option>
                     <option value="Kirim Barang">Kirim Barang</option>
