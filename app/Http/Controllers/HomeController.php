@@ -76,6 +76,7 @@ class HomeController extends Controller
                 'jenis' => $request->jenis,
                 'tanggal_pulang' => $tanggal_pulang,
                 'keterangan' => $request->keterangan,
+                'status' => 'menunggu',
             ]);
         }else{
             Pesanan::insert([
@@ -88,6 +89,7 @@ class HomeController extends Controller
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
                 'keterangan' => $request->keterangan,
+                'status' => 'menunggu',
             ]);
         }
         

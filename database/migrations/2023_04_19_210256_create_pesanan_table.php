@@ -24,6 +24,8 @@ return new class extends Migration
             $table->datetime('tanggal_pulang')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('kontak');
+            $table->string('status');
+            $table->string('info')->nullable();
         });
     }
 

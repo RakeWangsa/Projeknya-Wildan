@@ -9,5 +9,5 @@ class Pesanan extends Model
 {
     use HasFactory;
     protected $table = 'pesanan';
-    protected $fillable = ['id','nama', 'id_pemesan', 'lokasi', 'tujuan', 'waktu', 'kontak','kendaraan','jenis','keterangan','tanggal_pulang'];
+    protected $fillable = ['id','nama', 'id_pemesan', 'lokasi', 'tujuan', 'waktu', 'kontak','kendaraan','jenis','keterangan','tanggal_pulang','status','info'];
 }
