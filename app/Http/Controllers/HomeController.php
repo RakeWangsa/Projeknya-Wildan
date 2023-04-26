@@ -167,4 +167,22 @@ class HomeController extends Controller
             return redirect('/pesananSaya')->with('success','Berhasil menghapus pesanan');
         }
     }
+
+    public function statusDiterima($id)
+    {
+        $id = base64_decode($id);
+        $pesanan = Pesanan::find($id);
+        $pesanan->status = 'Diterima';
+        $pesanan->save();
+        return redirect('/home/admin')->with('success','Berhasil mengupdate status');
+    }
+
+    public function statusDitolak($id)
+    {
+        $id = base64_decode($id);
+        $pesanan = Pesanan::find($id);
+        $pesanan->status = 'Ditolak';
+        $pesanan->save();
+        return redirect('/home/admin')->with('success','Berhasil mengupdate status');
+    }
 }

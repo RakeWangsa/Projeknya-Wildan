@@ -95,7 +95,8 @@
                       @endif
                       <td class="text-center">{{ $item->status }}</td>
                       <td class="text-center">
-                        <a class="btn btn-warning" style="border-radius: 100px;" a href=""><i class="bi bi-pencil-square text-white"></i></a>
+                        <a class="btn btn-primary" style="border-radius: 100px;" a href="{{ route('statusDiterima', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-check-circle text-white"></i></a>
+                        <a class="btn btn-warning" style="border-radius: 100px;" a href="{{ route('statusDitolak', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-x-circle text-white"></i></a>
                         <a class="btn btn-danger" style="border-radius: 100px;" onclick="return confirm('Apakah anda yakin?')" a href="{{ route('hapusPesananAdmin', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-trash"></i></a>
                      </td>
                    </tr>
@@ -176,7 +177,8 @@
                    @endif
                    <td class="text-center">{{ $item->status }}</td>
                    <td class="text-center">
-                     <a class="btn btn-warning" style="border-radius: 100px;" a href=""><i class="bi bi-pencil-square text-white"></i></a>
+                     <a class="btn btn-primary" style="border-radius: 100px;" a href="{{ route('statusDiterima', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-check-circle text-white"></i></a>
+                     <a class="btn btn-warning" style="border-radius: 100px;" a href="{{ route('statusDitolak', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-x-circle text-white"></i></a>
                      <a class="btn btn-danger" style="border-radius: 100px;" onclick="return confirm('Apakah anda yakin?')" a href="{{ route('hapusPesananAdmin', ['id' => base64_encode($item->id)]) }}"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
