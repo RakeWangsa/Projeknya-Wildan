@@ -181,10 +181,18 @@
                                  <p>Keterangan : -</p>
                               @endif
                               <p>Status : {{ $item->status }}</p>
+                              @if($item->status=='Diterima')
+                              <p>Supir : {{ $item->supir }}</p>
+                              <p>Kontak Supir : {{ $item->harga }}</p>
+                              <p>Harga : {{ $item->harga }}</p>
+                              <p>Keterangan (Supir) : {{ $item->keterangan2 }}</p>
+                              @else
+                              <p>Alasan Ditolak : {{ $item->keterangan2 }}</p>
+                              @endif
                            </div>
                            <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <a class="btn btn-primary" a href="{{ route('prosesPesanan', ['id' => base64_encode($item->id)]) }}">Lanjutkan</a>
+                              <a class="btn btn-primary" a href="{{ route('prosesPesanan', ['id' => base64_encode($item->id)]) }}">Edit</a>
                            </div>
                         </div>
                         </div>
