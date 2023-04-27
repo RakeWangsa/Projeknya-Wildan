@@ -55,17 +55,27 @@
 <script>
    const statusSelect = document.querySelector('#status');
    const tanggalPulangInput = document.querySelector('#cek1');
-   const tanggalPulangInput = document.querySelector('#cek2');
-   const tanggalPulangInput = document.querySelector('#cek3');
+   const tanggalPulangInput2 = document.querySelector('#cek2');
+   const tanggalPulangInput3 = document.querySelector('#cek3');
    
    // Check if the selected option is "Pulang-Pergi" on page load
    if (statusSelect.value === 'Diterima') {
      tanggalPulangInput.style.display = 'block';
      tanggalPulangInput.querySelector('input').setAttribute('required', 'required');
+     tanggalPulangInput2.style.display = 'block';
+     tanggalPulangInput2.querySelector('input').setAttribute('required', 'required');
+     tanggalPulangInput3.style.display = 'block';
+     tanggalPulangInput3.querySelector('input').setAttribute('required', 'required');
    } else {
      tanggalPulangInput.style.display = 'none';
      tanggalPulangInput.querySelector('input').removeAttribute('required');
      tanggalPulangInput.querySelector('input').value = '';
+     tanggalPulangInput2.style.display = 'none';
+     tanggalPulangInput2.querySelector('input').removeAttribute('required');
+     tanggalPulangInput2.querySelector('input').value = '';
+     tanggalPulangInput3.style.display = 'none';
+     tanggalPulangInput3.querySelector('input').removeAttribute('required');
+     tanggalPulangInput3.querySelector('input').value = '';
    }
    
    // Add event listener to jenisSelect
@@ -74,10 +84,20 @@
      if (this.value === 'Diterima') {
        tanggalPulangInput.style.display = 'block';
        tanggalPulangInput.querySelector('input').setAttribute('required', 'required');
+       tanggalPulangInput2.style.display = 'block';
+       tanggalPulangInput2.querySelector('input').setAttribute('required', 'required');
+       tanggalPulangInput3.style.display = 'block';
+       tanggalPulangInput3.querySelector('input').setAttribute('required', 'required');
      } else {
        tanggalPulangInput.style.display = 'none';
        tanggalPulangInput.querySelector('input').removeAttribute('required');
        tanggalPulangInput.querySelector('input').value = '';
+       tanggalPulangInput2.style.display = 'none';
+       tanggalPulangInput2.querySelector('input').removeAttribute('required');
+       tanggalPulangInput2.querySelector('input').value = '';
+       tanggalPulangInput3.style.display = 'none';
+       tanggalPulangInput3.querySelector('input').removeAttribute('required');
+       tanggalPulangInput3.querySelector('input').value = '';
      }
    });
    </script>
