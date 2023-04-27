@@ -20,12 +20,18 @@ class HomeController extends Controller
     public function homeAdmin()
     {
         $pesanan = DB::table('pesanan')
+        ->where('status','Menunggu')
+        ->select('*')
+        ->get();
+        $pesanan2 = DB::table('pesanan')
+        ->whereNot('status','Menunggu')
         ->select('*')
         ->get();
         return view('admin.home', [
             'title' => 'Sewa Supir - Home (Admin)',
             'active' => 'home',
             'pesanan' => $pesanan,
+            'pesanan2' => $pesanan2,
         ]);
     }
 
@@ -90,7 +96,7 @@ class HomeController extends Controller
                 'jenis' => $request->jenis,
                 'tanggal_pulang' => $tanggal_pulang,
                 'keterangan' => $request->keterangan,
-                'status' => 'menunggu',
+                'status' => 'Menunggu',
             ]);
         }else{
             Pesanan::insert([
@@ -103,7 +109,7 @@ class HomeController extends Controller
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
                 'keterangan' => $request->keterangan,
-                'status' => 'menunggu',
+                'status' => 'Menunggu',
             ]);
         }
         

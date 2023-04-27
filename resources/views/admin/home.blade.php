@@ -164,8 +164,8 @@
              
              <tbody>
                @php($no=1)
-               @if(count($pesanan) > 0)
-               @foreach($pesanan as $item)
+               @if(count($pesanan2) > 0)
+               @foreach($pesanan2 as $item)
                 <tr data-id="{{ $item->id }}">
                    <td scope="row" class="text-center">{{ $no++ }}</td>
                    <td class="text-center">{{ $item->nama }}</td>

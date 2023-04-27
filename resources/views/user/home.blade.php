@@ -35,19 +35,19 @@
                   </div>
                   <div class="carousel-inner" style="border-radius: 20px">
                     <div class="carousel-item active">
-                      <img src="{{asset('admintemplate/img/slide1.jpg')}}" class="d-block w-100" alt="gambar1" style="height:450px">
+                      <img src="{{asset('admintemplate/img/slide1.jpg')}}" class="d-block w-100" alt="gambar1">
                       <div class="carousel-caption d-none d-md-block">
                         <h3 class="text-warning font-weight-bold" style="-webkit-text-stroke: 1px yellow; text-stroke: 1px yellow;">Kami menyediakan layanan penyewaan supir yang handal dan terlatih untuk mengantar anda ke tujuan.</h3>
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="{{asset('admintemplate/img/slide2.jpg')}}" class="d-block w-100" alt="gambar2" style="height:450px">
+                      <img src="{{asset('admintemplate/img/slide2.jpg')}}" class="d-block w-100" alt="gambar2">
                       <div class="carousel-caption d-none d-md-block">
                         <h3 class="text-warning font-weight-bold" style="-webkit-text-stroke: 1px yellow; text-stroke: 1px yellow;">Kami memiliki tim supir yang profesional dan berpengalaman dalam mengemudikan berbagai jenis kendaraan, termasuk mobil pribadi, bus, minibus, dan kendaraan khusus. </h3>
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="{{asset('admintemplate/img/slide3.jpg')}}" class="d-block w-100" alt="gambar3" style="height:450px">
+                      <img src="{{asset('admintemplate/img/slide3.jpg')}}" class="d-block w-100" alt="gambar3">
                       <div class="carousel-caption d-none d-md-block">
                         <h3 class="text-warning font-weight-bold" style="-webkit-text-stroke: 1px yellow; text-stroke: 1px yellow;">Kami juga memiliki jaringan supir yang luas dan terlatih di berbagai kota di Indonesia</h3>
 
