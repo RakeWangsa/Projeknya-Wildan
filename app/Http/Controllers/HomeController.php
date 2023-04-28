@@ -52,12 +52,19 @@ class HomeController extends Controller
         ->first();
         $pesanan = DB::table('pesanan')
         ->where('id_pemesan',$id)
+        ->where('status','Menunggu')
+        ->select('*')
+        ->get();
+        $pesanan2 = DB::table('pesanan')
+        ->where('id_pemesan',$id)
+        ->whereNot('status','Menunggu')
         ->select('*')
         ->get();
         return view('user.pesananSaya', [
             'title' => 'Sewa Supir - Pesanan Saya',
             'active' => 'pesanan',
             'pesanan' => $pesanan,
+            'pesanan2' => $pesanan2,
         ]);
     }
 

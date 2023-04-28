@@ -177,4 +177,91 @@
          </div>
       </div>
 </div>
+
+<div class="row">
+   <div class="card col-md-12 mt-2 pb-4">
+      <div class="card-body">
+          <h5 class="card-title">Pesanan Selesai</h5>
+          <div class="table-container border mt-4">
+            <table>
+               <thead>
+                 <tr>
+                   <th scope="col" class="text-center">No</th>
+                   <th scope="col" class="text-center">Nama</th>
+                   <th scope="col" class="text-center">Tujuan</th>
+                   <th scope="col" class="text-center">Status</th>
+                   <th scope="col" class="text-center">Action</th>
+                 </tr>
+               </thead>
+               
+               <tbody>
+                  @php($no=1)
+                 @if(count($pesanan2) > 0)
+                   @foreach($pesanan2 as $item)
+                     <tr>
+                       <td scope="row" class="text-center">{{ $no++ }}</td>
+                       <td class="text-center">{{ $item->nama }}</td>
+                       <td class="text-center">{{ $item->tujuan }}</td>
+                       <td class="text-center">{{ $item->status }}</td>
+                       <td class="text-center">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{ $item->id }}">
+                           Detail
+                         </button>
+                       </td>
+                     </tr>
+             
+                     <!-- Modal -->
+                     <div class="modal fade" id="modal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Pesanan</h1>
+                              {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                           </div>
+                           <div class="modal-body">
+                              <p>Nama : {{ $item->nama }}</p>
+                              <p>Kontak : {{ $item->kontak }}</p>
+                              <p>Lokasi Penjemputan : {{ $item->lokasi }}</p>
+                              <p>Tujuan : {{ $item->tujuan }}</p>
+                              <p>Waktu : {{ $item->waktu }}</p>
+                              <p>Kendaraan : {{ $item->kendaraan }}</p>
+                              <p>Jenis Jasa : {{ $item->jenis }}</p>
+                              @if(isset($item->tanggal_pulang))
+                                 <p>Tanggal Pulang : {{ $item->tanggal_pulang }}</p>
+                              @endif
+                              @if(isset($item->keterangan))
+                                 <p>Keterangan : {{ $item->keterangan }}</p>
+                              @else
+                                 <p>Keterangan : -</p>
+                              @endif
+                              <p>Status : {{ $item->status }}</p>
+                              @if($item->status=='Diterima')
+                              <p>Supir : {{ $item->supir }}</p>
+                              <p>Kontak Supir : {{ $item->harga }}</p>
+                              <p>Harga : {{ $item->harga }}</p>
+                              <p>Keterangan (Supir) : {{ $item->keterangan2 }}</p>
+                              @else
+                              <p>Alasan Ditolak : {{ $item->keterangan2 }}</p>
+                              @endif
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <a class="btn btn-primary" a href="{{ route('prosesPesanan', ['id' => base64_encode($item->id)]) }}">Edit</a>
+                           </div>
+                        </div>
+                        </div>
+                     </div>
+                   @endforeach
+                 @else
+                   <tr>
+                     <td colspan="3" class="text-center">Tidak ada pesanan</td>
+                   </tr>
+                 @endif
+               </tbody>
+             </table>
+         </div>
+      </div>
+   </div>
+</div>
+
 @endsection
