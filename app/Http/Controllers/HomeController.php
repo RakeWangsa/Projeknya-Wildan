@@ -35,6 +35,18 @@ class HomeController extends Controller
         ]);
     }
 
+    public function logActivity()
+    {
+        $log_activity = DB::table('log_activity')
+        ->select('*')
+        ->get();
+        return view('admin.logActivity', [
+            'title' => 'Sewa Supir - Log Activity',
+            'active' => 'home',
+            'log_activity' => $log_activity,
+        ]);
+    }
+
     public function sewa()
     {
         return view('user.sewa', [
