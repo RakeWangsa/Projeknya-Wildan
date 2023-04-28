@@ -106,7 +106,7 @@
                               <div class="modal-footer">
                                  {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
                                  <a class="btn btn-primary" a href="{{ route('editPesanan', ['id' => base64_encode($item->id)]) }}">Edit</a>
-                                 <a class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')" a href="{{ route('hapusPesanan', ['id' => base64_encode($item->id)]) }}">Hapus</a>
+                                 <a class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')" a href="{{ route('hapusPesanan', ['id' => base64_encode($item->id)]) }}">Batalkan Pesanan</a>
                               </div>
                            </div>
                            </div>
@@ -215,7 +215,7 @@
                         <div class="modal-content">
                            <div class="modal-header">
                               <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Pesanan</h1>
-                              {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
                            <div class="modal-body">
                               <p>Nama : {{ $item->nama }}</p>
@@ -244,8 +244,9 @@
                               @endif
                            </div>
                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <a class="btn btn-primary" a href="{{ route('prosesPesanan', ['id' => base64_encode($item->id)]) }}">Edit</a>
+                              {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                              <button class="btn btn-primary" onclick="return alert('Pesanan sudah diproses, silahkan hubungi admin untuk melakukan perubahan')">Edit</button>
+                              <button class="btn btn-danger" onclick="return alert('Pesanan sudah diproses, silahkan hubungi admin untuk menghapus pesanan')">Hapus Pesanan</button>
                            </div>
                         </div>
                         </div>
