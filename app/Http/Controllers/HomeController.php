@@ -207,7 +207,21 @@ class HomeController extends Controller
             $pesanan->keterangan = $request->keterangan;
             $pesanan->update();
         }
-        
+        LogActivity::insert([
+            'id_pesanan' => $id,
+            'activity' => 'Mengedit Pesanan',
+            'nama' => $request->nama,
+            'id_pemesan' => $id,
+            'kontak' => $request->kontak,
+            'lokasi' => $request->lokasi,
+            'tujuan' => $request->tujuan,
+            'waktu' => $waktu,
+            'kendaraan' => $request->kendaraan,
+            'jenis' => $request->jenis,
+            'tanggal_pulang' => $tanggal_pulang,
+            'keterangan' => $request->keterangan,
+            'status' => 'Belum Diproses',
+        ]);
         return redirect('/pesananSaya')->with('success','Berhasil mengedit pemesanan');
     }
 
@@ -219,6 +233,27 @@ class HomeController extends Controller
         ->pluck('role')
         ->first();
         $id = base64_decode($id);
+
+        $pesanan = DB::table('pesanan')
+        ->where('id',$id)
+        ->select('*')
+        ->get();
+
+        LogActivity::insert([
+            'id_pesanan' => $id,
+            'activity' => 'Menghapus Pesanan',
+            'nama' => $pesanan[0]->nama,
+            'id_pemesan' => $id,
+            'kontak' => $pesanan[0]->kontak,
+            'lokasi' => $pesanan[0]->lokasi,
+            'tujuan' => $pesanan[0]->tujuan,
+            'waktu' => $pesanan[0]->waktu,
+            'kendaraan' => $pesanan[0]->kendaraan,
+            'jenis' => $pesanan[0]->jenis,
+            'tanggal_pulang' => $pesanan[0]->tanggal_pulang,
+            'keterangan' => $pesanan[0]->keterangan,
+            'status' => 'Belum Diproses',
+        ]);
         Pesanan::where('id', $id)->delete();
 
         if($role=="admin"){
