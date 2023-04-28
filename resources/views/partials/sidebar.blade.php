@@ -4,6 +4,7 @@
          @auth
             @if (auth()->user()->role=="admin")
                <a class="nav-link collapsed {{ ($active === "home") ? 'active' : '' }}" href="/home/admin"> <i class="bi bi-grid"></i><span>Home</span> </a>
+               <a class="nav-link collapsed {{ ($active === "log activity") ? 'active' : '' }}" href="/home/admin/logActivity"> <i class="bi bi-eye"></i><span>Log Activity</span> </a>
             @elseif (auth()->user()->role=="user")
                <a class="nav-link collapsed {{ ($active === "home") ? 'active' : '' }}" href="/home"> <i class="bi bi-grid"></i><span>Home</span> </a>
                <a class="nav-link collapsed {{ ($active === "pesanan") ? 'active' : '' }}" href="/pesananSaya"> <i class="bi bi-list-ul"></i><span>Pesanan saya</span> </a> 

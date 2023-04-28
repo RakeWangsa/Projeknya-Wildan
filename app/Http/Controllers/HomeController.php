@@ -20,11 +20,11 @@ class HomeController extends Controller
     public function homeAdmin()
     {
         $pesanan = DB::table('pesanan')
-        ->where('status','Menunggu')
+        ->where('status','Belum Diproses')
         ->select('*')
         ->get();
         $pesanan2 = DB::table('pesanan')
-        ->whereNot('status','Menunggu')
+        ->whereNot('status','Belum Diproses')
         ->select('*')
         ->get();
         return view('admin.home', [
@@ -52,12 +52,12 @@ class HomeController extends Controller
         ->first();
         $pesanan = DB::table('pesanan')
         ->where('id_pemesan',$id)
-        ->where('status','Menunggu')
+        ->where('status','Belum Diproses')
         ->select('*')
         ->get();
         $pesanan2 = DB::table('pesanan')
         ->where('id_pemesan',$id)
-        ->whereNot('status','Menunggu')
+        ->whereNot('status','Belum Diproses')
         ->select('*')
         ->get();
         return view('user.pesananSaya', [
@@ -103,7 +103,7 @@ class HomeController extends Controller
                 'jenis' => $request->jenis,
                 'tanggal_pulang' => $tanggal_pulang,
                 'keterangan' => $request->keterangan,
-                'status' => 'Menunggu',
+                'status' => 'Belum Diproses',
             ]);
         }else{
             Pesanan::insert([
@@ -116,7 +116,7 @@ class HomeController extends Controller
                 'kendaraan' => $request->kendaraan,
                 'jenis' => $request->jenis,
                 'keterangan' => $request->keterangan,
-                'status' => 'Menunggu',
+                'status' => 'Belum Diproses',
             ]);
         }
         
