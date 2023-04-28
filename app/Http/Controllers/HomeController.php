@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pesanan;
+use App\Models\LogActivity;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
@@ -37,13 +38,13 @@ class HomeController extends Controller
 
     public function logActivity()
     {
-        $log_activity = DB::table('log_activity')
+        $logActivity = DB::table('logActivity')
         ->select('*')
         ->get();
         return view('admin.logActivity', [
             'title' => 'Sewa Supir - Log Activity',
             'active' => 'home',
-            'log_activity' => $log_activity,
+            'logActivity' => $logActivity,
         ]);
     }
 
@@ -131,6 +132,26 @@ class HomeController extends Controller
                 'status' => 'Belum Diproses',
             ]);
         }
+        $id_pesanan = DB::table('pesanan')
+        ->where('id_pemesan',$id)
+        ->orderBy('id','desc')
+        ->pluck('id')
+        ->first();
+        LogActivity::insert([
+            'id_pesanan' => $id_pesanan,
+            'activity' => 'Membuat Pesanan',
+            'nama' => $request->nama,
+            'id_pemesan' => $id,
+            'kontak' => $request->kontak,
+            'lokasi' => $request->lokasi,
+            'tujuan' => $request->tujuan,
+            'waktu' => $waktu,
+            'kendaraan' => $request->kendaraan,
+            'jenis' => $request->jenis,
+            'tanggal_pulang' => $tanggal_pulang,
+            'keterangan' => $request->keterangan,
+            'status' => 'Belum Diproses',
+        ]);
         
         return redirect('/pesananSaya')->with('success','Berhasil melakukan pemesanan');
     }
