@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('id_pesanan');
+            $table->datetime('waktusubmit');
             $table->string('nama');
             $table->string('id_pemesan');
             $table->string('activity');
@@ -27,6 +28,17 @@ return new class extends Migration
             $table->string('keterangan')->nullable();
             $table->string('kontak')->nullable();
             $table->string('status')->nullable();
+
+            $table->string('nama2')->nullable();
+            $table->string('lokasi2')->nullable();
+            $table->string('tujuan2')->nullable();
+            $table->datetime('waktu2')->nullable();
+            $table->string('kendaraan2')->nullable();
+            $table->string('jenis2')->nullable();
+            $table->datetime('tanggal_pulang2')->nullable();
+            $table->string('keterangan2')->nullable();
+            $table->string('kontak2')->nullable();
+            $table->string('status2')->nullable();
         });
     }
 

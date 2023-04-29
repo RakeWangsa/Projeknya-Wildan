@@ -182,6 +182,10 @@ class HomeController extends Controller
         ->first();
         $waktu = date('Y-m-d H:i:s', strtotime($request->waktu));
         $tanggal_pulang = date('Y-m-d H:i:s', strtotime($request->tanggal_pulang));
+        $pesananSebelum = DB::table('pesanan')
+        ->where('id',$id)
+        ->select('*')
+        ->get();
         $pesanan = Pesanan::findOrFail($id);
         
         if($request->jenis=='Pulang-Pergi'){
@@ -207,20 +211,32 @@ class HomeController extends Controller
             $pesanan->keterangan = $request->keterangan;
             $pesanan->update();
         }
+        
         LogActivity::insert([
             'id_pesanan' => $id,
             'activity' => 'Mengedit Pesanan',
-            'nama' => $request->nama,
-            'id_pemesan' => $id,
-            'kontak' => $request->kontak,
-            'lokasi' => $request->lokasi,
-            'tujuan' => $request->tujuan,
-            'waktu' => $waktu,
-            'kendaraan' => $request->kendaraan,
-            'jenis' => $request->jenis,
-            'tanggal_pulang' => $tanggal_pulang,
-            'keterangan' => $request->keterangan,
+            'nama' => $pesananSebelum[0]->nama,
+            'id_pemesan' => $id_pemesan,
+            'kontak' => $pesananSebelum[0]->kontak,
+            'lokasi' => $pesananSebelum[0]->lokasi,
+            'tujuan' => $pesananSebelum[0]->tujuan,
+            'waktu' => $pesananSebelum[0]->waktu,
+            'kendaraan' => $pesananSebelum[0]->kendaraan,
+            'jenis' => $pesananSebelum[0]->jenis,
+            'tanggal_pulang' => $pesananSebelum[0]->tanggal_pulang,
+            'keterangan' => $pesananSebelum[0]->keterangan,
             'status' => 'Belum Diproses',
+
+            'nama2' => $request->nama,
+            'kontak2' => $request->kontak,
+            'lokasi2' => $request->lokasi,
+            'tujuan2' => $request->tujuan,
+            'waktu2' => $waktu,
+            'kendaraan2' => $request->kendaraan,
+            'jenis2' => $request->jenis,
+            'tanggal_pulang2' => $tanggal_pulang,
+            'keterangan2' => $request->keterangan,
+            'status2' => 'Belum Diproses',
         ]);
         return redirect('/pesananSaya')->with('success','Berhasil mengedit pemesanan');
     }

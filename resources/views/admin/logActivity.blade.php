@@ -82,10 +82,17 @@
                            <div class="modal-dialog">
                            <div class="modal-content">
                               <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Pesanan</h1>
+                                 @if($item->activity == "Membuat Pesanan")
+                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Detail pesanan yang dibuat</h1>
+                                 @elseif($item->activity == "Mengedit Pesanan")
+                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Detail pesanan yang diedit</h1>
+                                 @elseif($item->activity == "Menghapus Pesanan")
+                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Detail pesanan yang dihapus</h1>
+                                 @endif
                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
+                                 <p>ID Pesanan : {{ $item->id_pesanan }}</p>
                                  <p>Nama : {{ $item->nama }}</p>
                                  <p>Kontak : {{ $item->kontak }}</p>
                                  <p>Lokasi Penjemputan : {{ $item->lokasi }}</p>
@@ -103,10 +110,10 @@
                                  @endif
                                  <p>Status : {{ $item->status }}</p>
                               </div>
-                              <div class="modal-footer">
-                                 {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                              {{-- <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                  <a class="btn btn-primary" a href="{{ route('prosesPesanan', ['id' => base64_encode($item->id)]) }}">Proses Pesanan</a>
-                              </div>
+                              </div> --}}
                            </div>
                            </div>
                         </div>
