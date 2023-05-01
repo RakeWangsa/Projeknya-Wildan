@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pesanan;
 use App\Models\LogActivity;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
@@ -95,7 +96,7 @@ class HomeController extends Controller
         'jenis' => ['required', Rule::notIn(['Pilih Jenis Jasa!'])],
         ], $messages);
 
-
+        $skrg = Carbon::now()->addHours(7);
         $email=session('email');
         $id = DB::table('users')
         ->where('email',$email)
@@ -151,6 +152,7 @@ class HomeController extends Controller
             'tanggal_pulang' => $tanggal_pulang,
             'keterangan' => $request->keterangan,
             'status' => 'Belum Diproses',
+            'waktusubmit' => $skrg
         ]);
         
         return redirect('/pesananSaya')->with('success','Berhasil melakukan pemesanan');
@@ -174,6 +176,7 @@ class HomeController extends Controller
 
     public function editPesananSubmit($id, Request $request)
     {
+        $skrg = Carbon::now()->addHours(7);
         $id = base64_decode($id);
         $email=session('email');
         $id_pemesan = DB::table('users')
@@ -214,6 +217,7 @@ class HomeController extends Controller
         
         LogActivity::insert([
             'id_pesanan' => $id,
+            'waktusubmit' => $skrg,
             'activity' => 'Mengedit Pesanan',
             'nama' => $pesananSebelum[0]->nama,
             'id_pemesan' => $id_pemesan,
@@ -243,6 +247,7 @@ class HomeController extends Controller
 
     public function hapusPesanan($id)
     {
+        $skrg = Carbon::now()->addHours(7);
         $email=session('email');
         $role = DB::table('users')
         ->where('email', $email)
@@ -269,6 +274,7 @@ class HomeController extends Controller
             'tanggal_pulang' => $pesanan[0]->tanggal_pulang,
             'keterangan' => $pesanan[0]->keterangan,
             'status' => 'Belum Diproses',
+            'waktusubmit' => $skrg
         ]);
         Pesanan::where('id', $id)->delete();
 
