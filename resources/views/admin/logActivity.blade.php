@@ -91,6 +91,47 @@
                                  @endif
                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
+                              @if($item->activity == "Mengedit Pesanan")
+                              <div class="modal-body">
+                                 <p>ID Pesanan : {{ $item->id_pesanan }}</p>
+                                 <br>
+                                 <p>Sebelum di edit</p>
+                                 <p>Nama : {{ $item->nama }}</p>
+                                 <p>Kontak : {{ $item->kontak }}</p>
+                                 <p>Lokasi Penjemputan : {{ $item->lokasi }}</p>
+                                 <p>Tujuan : {{ $item->tujuan }}</p>
+                                 <p>Waktu : {{ $item->waktu }}</p>
+                                 <p>Kendaraan : {{ $item->kendaraan }}</p>
+                                 <p>Jenis Jasa : {{ $item->jenis }}</p>
+                                 @if(isset($item->tanggal_pulang))
+                                    <p>Tanggal Pulang : {{ $item->tanggal_pulang }}</p>
+                                 @endif
+                                 @if(isset($item->keterangan))
+                                    <p>Keterangan : {{ $item->keterangan }}</p>
+                                 @else
+                                    <p>Keterangan : -</p>
+                                 @endif
+                                 <p>Status : {{ $item->status }}</p>
+                                 <br>
+                                 <p>Setelah di edit</p>
+                                 <p>Nama : {{ $item->nama2 }}</p>
+                                 <p>Kontak : {{ $item->kontak2 }}</p>
+                                 <p>Lokasi Penjemputan : {{ $item->lokasi2 }}</p>
+                                 <p>Tujuan : {{ $item->tujuan2 }}</p>
+                                 <p>Waktu : {{ $item->waktu2 }}</p>
+                                 <p>Kendaraan : {{ $item->kendaraan2 }}</p>
+                                 <p>Jenis Jasa : {{ $item->jenis2 }}</p>
+                                 @if(isset($item->tanggal_pulang2))
+                                    <p>Tanggal Pulang : {{ $item->tanggal_pulang2 }}</p>
+                                 @endif
+                                 @if(isset($item->keterangan2))
+                                    <p>Keterangan : {{ $item->keterangan2 }}</p>
+                                 @else
+                                    <p>Keterangan : -</p>
+                                 @endif
+                                 <p>Status : {{ $item->status2 }}</p>
+                              </div>
+                              @else
                               <div class="modal-body">
                                  <p>ID Pesanan : {{ $item->id_pesanan }}</p>
                                  <p>Nama : {{ $item->nama }}</p>
@@ -110,6 +151,7 @@
                                  @endif
                                  <p>Status : {{ $item->status }}</p>
                               </div>
+                              @endif
                               {{-- <div class="modal-footer">
                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                  <a class="btn btn-primary" a href="{{ route('prosesPesanan', ['id' => base64_encode($item->id)]) }}">Proses Pesanan</a>
