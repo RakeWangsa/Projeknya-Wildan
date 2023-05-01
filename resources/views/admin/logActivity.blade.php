@@ -94,6 +94,7 @@
                               @if($item->activity == "Mengedit Pesanan")
                               <div class="modal-body">
                                  <p>ID Pesanan : {{ $item->id_pesanan }}</p>
+                                 <p>Waktu Submit : {{ $item->waktusubmit }}</p>
                                  <br>
                                  <p>Sebelum di edit</p>
                                  <p>Nama : {{ $item->nama }}</p>
@@ -134,6 +135,8 @@
                               @else
                               <div class="modal-body">
                                  <p>ID Pesanan : {{ $item->id_pesanan }}</p>
+                                 <p>Waktu Submit : {{ $item->waktusubmit }}</p>
+                                 <br>
                                  <p>Nama : {{ $item->nama }}</p>
                                  <p>Kontak : {{ $item->kontak }}</p>
                                  <p>Lokasi Penjemputan : {{ $item->lokasi }}</p>
